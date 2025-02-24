@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/codelta_backend"
+]
+resolver = "2"
