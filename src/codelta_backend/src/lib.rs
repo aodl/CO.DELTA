@@ -7,8 +7,8 @@ use ic_cdk::caller;
 
 const ALLOWED_CALLERS: &[&str] = &[
     "koiza-s6kz2-m45zq-4lrn7-4v65m-6zemu-neoxj-vz6cb-ouolw-rrawv-mae", // aligatorr89
-    "zkkkd-i34qc-367ln-e2u7o-ezznu-dkfqh-gtfvz-cviph-6qa4v-evtfs-wqe"  // Lorimer
-   
+    "zkkkd-i34qc-367ln-e2u7o-ezznu-dkfqh-gtfvz-cviph-6qa4v-evtfs-wqe", // Lorimer
+    "hfbtd-e2vzk-rvwfx-c55l3-tsuue-oizir-hl4bg-tajby-skikk-iefse-fqe"  // MalithHatananchchige
 ];
 
 fn only_allowed_callers() -> Result<(), String> {
