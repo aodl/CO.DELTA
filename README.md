@@ -40,8 +40,11 @@ The codelta_backend canister (principal qkgir-uyaaa-aaaar-qaonq-cai) is the veri
 #### check_status
 Given that no individual has control over the frontend and backend canisters, their status information needs exposing by other means (this is important for managing cycles balance etc.). For this reason the codelta_backend canister exposes a `check_status` method, callable by any member of the CO.DELTA team. It accepts a canister principal as an argument, and can be used to display the status information of either the frontend, backend, or threshold canister. This is why the backend canister is set as one of the controllers of the frontend canister and the threshold canister (so that it can access this information).
 
-#### disburse
-The primary purpose of the codelta_backend canister is to act as a decentralised entity that can accept voting rewards (ICP that can be held by the canister's default account). A `disburse` method is provided, but can be called by no other principal than the canister controller. Given that the backend canister's controller is the threshold canister, disbursing this ICP therefore requires a disburse proposal and CO.DELTA member consensus. This setup is intended to faciliate equal shares of the rewards disbursed to each member. This is to incentivise their NNS governance participation via the CO.DELTA neuron. See the 'Neuron Configuration' section below. Also see the [Grants for Voting Neurons](https://forum.dfinity.org/t/grants-for-voting-neurons/32721) initiative for context.
+#### check_balance
+Similar to `check_status` (above) but this method displays the ICP balance held in the canisters default account. This is the source of ICP that can be distributed to CO.DELTA members (to reward them for their NNS reviews and contributing to the CO.DELTA vote). As with `check_status`, `check_balance` is callable by any member of the CO.DELTA team. It does not accept any arguments and is only intended for checking the canisters own balance.
+
+#### distribute_icp
+The primary purpose of the codelta_backend canister is to act as a decentralised entity that can accept voting rewards (ICP that can be held by the canister's default account). A `distribute_icp` method is provided, but can be called by no other principal than the canister controller. Given that the backend canister's controller is the threshold canister, distributing this ICP therefore requires a `distribute_icp` proposal and CO.DELTA member consensus. This setup is intended to faciliate equal shares of the rewards periodically distributed to each member. This is to incentivise their NNS governance participation via the CO.DELTA neuron. See the 'Neuron Configuration' section below. Also see the [Grants for Voting Neurons](https://forum.dfinity.org/t/grants-for-voting-neurons/32721) initiative for context.
 
 **Both the frontend and backend canisters are controlled by the threshold canister**, which is what provides the decentralisation guarantee (that no individual member of CO.DELTA can exert unilateral control over the canisters, its funds, nor the neuron).
 
@@ -91,3 +94,4 @@ An internal topic that the members of CO.DELTA cover is Neuron Management. This 
 # Team
 
 Current CO.DELTA members are listed on the frontend -> https://wtjj7-cyaaa-aaaar-qaozq-cai.icp0.io/
+
