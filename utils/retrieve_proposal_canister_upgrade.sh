@@ -36,11 +36,11 @@ dfx canister call $THRESHOLD_CANISTER getUpgradeWasmBlob $PROPOSAL_ID --network=
   | sed -n 's/.*blob "\([^"]*\)".*/\1/p'  \
   | tr -d '\n'  \
   | xxd -r -p > canister_upgrade_pipeline/module.wasm
-echo "Saved WASM to canister_upgrade_verification/module.wasm"
+echo "Saved WASM to canister_upgrade_pipeline/module.wasm"
 echo
 echo "Attempting to compute WASM Sha256..."
 sha256sum canister_upgrade_pipeline/module.wasm
 echo
 echo "=== Done! ==="
 echo
-echo "If the proposal is active you can accept or reject by executing 'dfx canister call $THRESHOLD_CANISTER accept $PROPOSAL_ID' or 'dfx canister call $THRESHOLD_CANISTER reject $PROPOSAL_ID'. You can confirm your vote was received by calling 'dfx canister call $THRESHOLD_CANISTER getProposal $PROPOSAL_ID' and observing the vote tally"
+echo "If the proposal is active you can accept or reject by executing 'dfx canister call $THRESHOLD_CANISTER accept $PROPOSAL_ID --network=$NETWORK' or 'dfx canister call $THRESHOLD_CANISTER reject $PROPOSAL_ID --network=$NETWORK'. You can confirm your vote was received by calling 'dfx canister call $THRESHOLD_CANISTER getProposal $PROPOSAL_ID --network=$NETWORK' and observing the vote tally"
