@@ -12,6 +12,8 @@
 
 # generated files
 **/declarations/
+utils/canister_upgrade_pipeline/
+utils/canister_call_pipeline/
 
 # rust
 target/
