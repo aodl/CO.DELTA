@@ -15,21 +15,16 @@ const MEMBER_PRINCIPALS: &[&str] = &[
     "koiza-s6kz2-m45zq-4lrn7-4v65m-6zemu-neoxj-vz6cb-ouolw-rrawv-mae", // aligatorr89
     "zkkkd-i34qc-367ln-e2u7o-ezznu-dkfqh-gtfvz-cviph-6qa4v-evtfs-wqe", // Lorimer
     "hfbtd-e2vzk-rvwfx-c55l3-tsuue-oizir-hl4bg-tajby-skikk-iefse-fqe", // MalithHatananchchige
-	
-	"hpikg-6exdt-jn33w-ndty3-fc7jc-tl2lr-buih3-cs3y7-tftkp-sfp62-gqe"  // test principal (to be removed)
 ];
 
 const MEMBER_ACCOUNTS: &[&str] = &[
     "c5b791df89098320ed193f3e026f011c2999a1915764926a0a1a254a990b16ad", // aligatorr89
     "f6a7fde8fed980f87e4c9ec6fe04820c9fd709a8a6e85deb6aea3c1c1d30c0df", // Lorimer
     "a27050324650c2ec5d29a5a7003136c70608ddc166ead1c45656b3ab3c2bcf69", // MalithHatananchchige
-	
-	"50caa6b87c2691449eb00c844988072a5c9297cb98c0d40d5f440c139aed0171", // test account (to be removed)
-	"2b8fbde99de881f695f279d2a892b1137bfe81a42d7694e064b1be58701e1138"
 ];
 
 // Threshold canister can only be operated by proposal and threshold consensus among members (>50%)
-const THRESHOLD_PRINCIPAL: &str = "zkkkd-i34qc-367ln-e2u7o-ezznu-dkfqh-gtfvz-cviph-6qa4v-evtfs-wqe";  // Lorimer for testing. TODO, change to threshold canister
+const THRESHOLD_PRINCIPAL: &str = "6g7za-ziaaa-aaaar-qaqja-cai";
 
 const LEDGER_CANISTER_ID: &str = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 
@@ -68,8 +63,7 @@ async fn check_status(canister_id: Principal) -> Result<CanisterStatusResponse, 
     Ok(status_response)
 }
 
-#[update(guard = "only_members_guard")]
-async fn check_balance() -> Result<Tokens, String> {
+async fn _check_balance() -> Result<Tokens, String> {
     // Instantiate client for the ICP Ledger (ryjl3-tyaaa-aaaaa-aaaba-cai)
     let client = ICRC1Client { runtime: CdkRuntime, ledger_canister_id: Principal::from_text(LEDGER_CANISTER_ID).unwrap() };
     // Default canister account (no subaccount)
@@ -84,6 +78,11 @@ async fn check_balance() -> Result<Tokens, String> {
         }
     };
     Ok(Tokens::from_e8s(canister_balance_e8.0.try_into().unwrap()))
+}
+
+#[update(guard = "only_members_guard")]
+async fn check_balance() -> Result<String, String> {
+    Ok(_check_balance().await.unwrap().to_string())
 }
 
 #[update(guard = "only_threshold_guard")]
@@ -114,7 +113,7 @@ async fn distribute_icp(target_account_ids: Vec<String>) -> Result<(), String> {
         }
     }
 	
-    let icp_balance: Tokens = check_balance().await?;
+    let icp_balance: Tokens = _check_balance().await?;
 
     // Calculate how much each account should receive
     let num_accounts = Nat::from(target_account_ids.len() as u64);

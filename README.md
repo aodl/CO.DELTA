@@ -79,9 +79,9 @@ The majority of canister settings are using the default values. There are a few 
   - threshold: `freezing-threshold=15552000` (180 days)
     - Same as the backend canister, for the same reasons. One of the reasons that disbural has been designed to require a proposal and voting is that this ensures regular usage of the threshold canister (avoiding long periods of time where it goes unused, and the possibility that it freezes without being noticed, and then eventually gets deleted by the protocol after the freezing threshold elapses)
 - `controllers`
-  - codelta_backend: TODO threshold canister id
-  - codelta_frontend: TODO threshold canister id, `qkgir-uyaaa-aaaar-qaonq-cai`
-  - threshold: TODO threshold canister id
+  - codelta_backend: `6g7za-ziaaa-aaaar-qaqja-cai`
+  - codelta_frontend: `6g7za-ziaaa-aaaar-qaqja-cai`, `qkgir-uyaaa-aaaar-qaonq-cai`
+  - threshold: `6g7za-ziaaa-aaaar-qaqja-cai`
 
 # Neuron Configuration
 
