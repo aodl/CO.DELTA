@@ -81,7 +81,7 @@ The majority of canister settings are using the default values. There are a few 
 - `controllers`
   - codelta_backend: `6g7za-ziaaa-aaaar-qaqja-cai`
   - codelta_frontend: `6g7za-ziaaa-aaaar-qaqja-cai`, `qkgir-uyaaa-aaaar-qaonq-cai`
-  - threshold: `6g7za-ziaaa-aaaar-qaqja-cai`
+  - threshold: `6g7za-ziaaa-aaaar-qaqja-cai`, `qkgir-uyaaa-aaaar-qaonq-cai`
 
 # Neuron Configuration
 
