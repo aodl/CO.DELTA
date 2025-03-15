@@ -74,7 +74,7 @@ The majority of canister settings are using the default values. There are a few 
 - `freezing-threshold`
   - codelta_backend: `freezing-threshold=15552000` (180 days)
     - A long period of time to ensure the canister is never deleted. The canister does not need to be running continously. If it ever freezes it will need unfreezing before triggering the next dispursal. This acts as a forcing function to check and top up the cycles balance of the canister.  
-  - codelta_fondend: `freezing-threshold=15552000` ( 90 days)
+  - codelta_fondend: `freezing-threshold=7776000` ( 90 days)
     - Half the freezing threshold of the backend canister. It should never hit this threshold, and should be topped up as needed whenever the backend canister is topped up. This ensures that the frontend is always up and available.
   - threshold: `freezing-threshold=15552000` (180 days)
     - Same as the backend canister, for the same reasons. One of the reasons that disbural has been designed to require a proposal and voting is that this ensures regular usage of the threshold canister (avoiding long periods of time where it goes unused, and the possibility that it freezes without being noticed, and then eventually gets deleted by the protocol after the freezing threshold elapses)
