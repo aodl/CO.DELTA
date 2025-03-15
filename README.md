@@ -19,7 +19,7 @@ Canisters are Internet Computer smart contracts ([more info](https://internetcom
 
 1. **codelta_frontend**: [wtjj7-cyaaa-aaaar-qaozq-cai](https://dashboard.internetcomputer.org/canister/wtjj7-cyaaa-aaaar-qaozq-cai)
 2. **codelta_backend**: [qkgir-uyaaa-aaaar-qaonq-cai](https://dashboard.internetcomputer.org/canister/qkgir-uyaaa-aaaar-qaonq-cai)
-3. **threshold** (separate repo)
+3. **threshold** [6g7za-ziaaa-aaaar-qaqja-cai](https://dashboard.internetcomputer.org/canister/6g7za-ziaaa-aaaar-qaqja-cai) ([separate repo](https://github.com/aodl/threshold))
 
 None of these canisters are controlled unilaterally by any person. They're decentralised, requiring team member consensus to manage and upgrade. More info below.
 
@@ -40,8 +40,11 @@ The codelta_backend canister (principal qkgir-uyaaa-aaaar-qaonq-cai) is the veri
 #### check_status
 Given that no individual has control over the frontend and backend canisters, their status information needs exposing by other means (this is important for managing cycles balance etc.). For this reason the codelta_backend canister exposes a `check_status` method, callable by any member of the CO.DELTA team. It accepts a canister principal as an argument, and can be used to display the status information of either the frontend, backend, or threshold canister. This is why the backend canister is set as one of the controllers of the frontend canister and the threshold canister (so that it can access this information).
 
-#### disburse
-The primary purpose of the codelta_backend canister is to act as a decentralised entity that can accept voting rewards (ICP that can be held by the canister's default account). A `disburse` method is provided, but can be called by no other principal than the canister controller. Given that the backend canister's controller is the threshold canister, disbursing this ICP therefore requires a disburse proposal and CO.DELTA member consensus. This setup is intended to faciliate equal shares of the rewards disbursed to each member. This is to incentivise their NNS governance participation via the CO.DELTA neuron. See the 'Neuron Configuration' section below. Also see the [Grants for Voting Neurons](https://forum.dfinity.org/t/grants-for-voting-neurons/32721) initiative for context.
+#### check_balance
+Similar to `check_status` (above) but this method displays the ICP balance held in the canisters default account. This is the source of ICP that can be distributed to CO.DELTA members (to reward them for their NNS reviews and contributing to the CO.DELTA vote). As with `check_status`, `check_balance` is callable by any member of the CO.DELTA team. It does not accept any arguments and is only intended for checking the canisters own balance.
+
+#### distribute_icp
+The primary purpose of the codelta_backend canister is to act as a decentralised entity that can accept voting rewards (ICP that can be held by the canister's default account). A `distribute_icp` method is provided, but can be called by no other principal than the canister controller. Given that the backend canister's controller is the threshold canister, distributing this ICP therefore requires a `distribute_icp` proposal and CO.DELTA member consensus. This setup is intended to faciliate equal shares of the rewards periodically distributed to each member. This is to incentivise their NNS governance participation via the CO.DELTA neuron. See the 'Neuron Configuration' section below. Also see the [Grants for Voting Neurons](https://forum.dfinity.org/t/grants-for-voting-neurons/32721) initiative for context.
 
 **Both the frontend and backend canisters are controlled by the threshold canister**, which is what provides the decentralisation guarantee (that no individual member of CO.DELTA can exert unilateral control over the canisters, its funds, nor the neuron).
 
@@ -71,14 +74,14 @@ The majority of canister settings are using the default values. There are a few 
 - `freezing-threshold`
   - codelta_backend: `freezing-threshold=15552000` (180 days)
     - A long period of time to ensure the canister is never deleted. The canister does not need to be running continously. If it ever freezes it will need unfreezing before triggering the next dispursal. This acts as a forcing function to check and top up the cycles balance of the canister.  
-  - codelta_fondend: `freezing-threshold=15552000` ( 90 days)
+  - codelta_fondend: `freezing-threshold=7776000` ( 90 days)
     - Half the freezing threshold of the backend canister. It should never hit this threshold, and should be topped up as needed whenever the backend canister is topped up. This ensures that the frontend is always up and available.
   - threshold: `freezing-threshold=15552000` (180 days)
     - Same as the backend canister, for the same reasons. One of the reasons that disbural has been designed to require a proposal and voting is that this ensures regular usage of the threshold canister (avoiding long periods of time where it goes unused, and the possibility that it freezes without being noticed, and then eventually gets deleted by the protocol after the freezing threshold elapses)
 - `controllers`
-  - codelta_backend: TODO threshold canister id
-  - codelta_frontend: TODO threshold canister id, `qkgir-uyaaa-aaaar-qaonq-cai`
-  - threshold: TODO threshold canister id
+  - codelta_backend: `6g7za-ziaaa-aaaar-qaqja-cai`
+  - codelta_frontend: `6g7za-ziaaa-aaaar-qaqja-cai`, `qkgir-uyaaa-aaaar-qaonq-cai`
+  - threshold: `6g7za-ziaaa-aaaar-qaqja-cai`, `qkgir-uyaaa-aaaar-qaonq-cai`
 
 # Neuron Configuration
 
@@ -91,3 +94,4 @@ An internal topic that the members of CO.DELTA cover is Neuron Management. This 
 # Team
 
 Current CO.DELTA members are listed on the frontend -> https://wtjj7-cyaaa-aaaar-qaozq-cai.icp0.io/
+

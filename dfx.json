@@ -11,7 +11,7 @@
       ],
       "source": [
         "src/codelta_frontend/assets",
-	"src/codelta_frontend/src"
+        "src/codelta_frontend/src"
       ],
       "type": "assets"
     }
