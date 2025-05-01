@@ -10,20 +10,12 @@
 # dfx temporary files
 .dfx/
 
-# generated files
-**/declarations/
-utils/canister_upgrade_pipeline/
-utils/canister_call_pipeline/
-
 # rust
 target/
+release-artifacts/
 
 # frontend code
 node_modules/
 dist/
-.svelte-kit/
+public
 
-# environment variables
-.env
-
-release-artifacts/
