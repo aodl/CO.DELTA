@@ -46,6 +46,14 @@ Similar to `check_status` (above) but this method displays the ICP balance held 
 #### distribute_icp
 The primary purpose of the codelta_backend canister is to act as a decentralised entity that can accept voting rewards (ICP that can be held by the canister's default account). A `distribute_icp` method is provided, but can be called by no other principal than the canister controller. Given that the backend canister's controller is the threshold canister, distributing this ICP therefore requires a `distribute_icp` proposal and CO.DELTA member consensus. This setup is intended to faciliate equal shares of the rewards periodically distributed to each member. This is to incentivise their NNS governance participation via the CO.DELTA neuron. See the 'Neuron Configuration' section below. Also see the [Grants for Voting Neurons](https://forum.dfinity.org/t/grants-for-voting-neurons/32721) initiative for context.
 
+### How to verify CO.DELTA build
+Verify build to be sure you are interacting with codebase that matches with release.
+Pull the last release version.
+
+make release
+
+Verify it is same build as here https://dashboard.internetcomputer.org/canister/qkgir-uyaaa-aaaar-qaonq-cai
+
 **Both the frontend and backend canisters are controlled by the threshold canister**, which is what provides the decentralisation guarantee (that no individual member of CO.DELTA can exert unilateral control over the canisters, its funds, nor the neuron).
 
 ## threshold
@@ -64,6 +72,16 @@ graph LR
 The threshold canister is what allows the other canisters to be managed in a decentralised manner, requiring a vote from team members in order to upgrade the canister or disburse ICP.
 
 Although self-upgrades are supported, if an upgrade of the threshold canister is ever needed, the plan would be to initialise a second threshold canister with the same configuration (as a fallback). Threshold canister A would then need to assign joint control to threshold canister B (an operation that would require a proposal and consensus). This would act as a safety measure, allowing recovery from botched threshold canister upgrades (just in case).
+
+### Verify threshold build
+Verify build to be sure you are interacting with codebase that matches with release.
+Pull the last release version.
+
+dfx deploy threshold --with-cycles 80000000000 --argument='(vec {principal "'$(dfx identity get-principal)'"; principal "2vxsx-fae"; })'
+
+shasum -a 256 .dfx/local/canisters/threshold/threshold.wasm 
+
+Verify it is same build as here https://dashboard.internetcomputer.org/canister/6g7za-ziaaa-aaaar-qaqja-cai
 
 # Settings
 
