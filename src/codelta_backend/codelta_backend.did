@@ -29,8 +29,29 @@ type QueryStats = record {
   num_calls_total : nat;
   request_payload_bytes_total : nat;
 };
+type Topic = variant {
+    Unspecified;
+    NeuronManagement;
+    ExchangeRate;
+    NetworkEconomics;
+    Governance;
+    NodeAdmin;
+    ParticipantManagement;
+    SubnetManagement;
+    NetworkCanisterManagement;
+    Kyc;
+    NodeProviderRewards;
+    IcOsVersionDeployment;
+    IcOsVersionElection;
+    SnsAndCommunityFund;
+    ApiBoundaryNodeManagement;
+    SubnetRental;
+    ProtocolCanisterManagement;
+    ServiceNervousSystemManagement;
+};
 service : {
   check_status : (principal) -> (variant { Ok: CanisterStatusResponse; Err: text });
-  check_balance : () -> (variant { Ok: text; Err: text });
-  distribute_icp: (vec text) -> (variant { Ok: null; Err: text });
+  check_balance : (Topic) -> (variant { Ok: text; Err: text });
+  check_subaccount_hex : (Topic) -> (variant { Ok: text; Err: text });
+  distribute_icp: (Topic, opt vec text) -> (variant { Ok: null; Err: text });
 }
