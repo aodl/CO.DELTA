@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
-
 # Check if at least 4 arguments are provided
 if [ "$#" -lt 4 ]; then
   echo "Usage: $0 arg1_network arg2_proposalSummary arg3_targetCanister arg4_targetMethod arg5_methodArg"
@@ -23,6 +21,12 @@ TARGET_METHOD="$4"
 
 # Optional fifth argument - args for the method being called
 METHOD_ARG="$5"
+
+THRESHOLD_CANISTER="$6"
+# Set production threshold canister in case argument not provided
+if [ -z "$THRESHOLD_CANISTER" ]; then
+  THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
+fi
 
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
@@ -47,7 +51,9 @@ if [ -z "$METHOD_ARG" ]; then
   echo "No method args to encode"
   BLOB="vec { }"
 else
-  didc encode "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  echo "About to encode METHOD_ARG $METHOD_ARG"
+  # didc encode "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  didc encode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)' "$METHOD_ARG" > canister_call_pipeline/arg.bin
   # Generate the blob from the canister call argument (didc encode converted to backslash-escaped vec hex sequence)
   BLOB=$(cat canister_call_pipeline/arg.bin \
     | tr -d ' \n' \

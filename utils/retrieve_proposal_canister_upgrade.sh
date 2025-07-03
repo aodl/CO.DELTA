@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
-
 # Check if at least 2 arguments are provided
 if [ "$#" -lt 2 ]; then
   echo "Usage: $0 arg1_network arg2_proposal_id"
@@ -14,6 +12,12 @@ NETWORK="$1"
 
 # Second argument - proposal id passed in as argument
 PROPOSAL_ID="$2"
+
+THRESHOLD_CANISTER="$3"
+# Set production threshold canister in case argument not provided
+if [ -z "$THRESHOLD_CANISTER" ]; then
+  THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
+fi
 
 mkdir -p canister_upgrade_pipeline
 rm -f canister_upgrade_pipeline/module.wasm
