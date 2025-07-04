@@ -32,7 +32,7 @@ CANISTER_ARG=$(dfx canister call $THRESHOLD_CANISTER getProposalPayload "($PROPO
 if [ -z "$CANISTER_ARG" ]; then
   echo "No canister args to decode"
 else
-  echo "$CANISTER_ARG" | didc decode
+  echo "$CANISTER_ARG" | didc decode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)'
 fi
 echo
 
