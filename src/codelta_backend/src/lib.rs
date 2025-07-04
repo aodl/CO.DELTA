@@ -39,7 +39,7 @@ fn contains_caller(allowed: &[&str]) -> Result<(), String> {
 
 /// Guard for allowing only member calls
 fn only_members_guard() -> Result<(), String> {
-    let principals = MEMBERS.into_iter().map(|m| m.principal).collect::<Vec<_>>();
+    let principals = MEMBERS.iter().map(|m| m.principal).collect::<Vec<_>>();
     contains_caller(&principals)
 }
 

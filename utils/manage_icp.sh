@@ -2,8 +2,8 @@
 set -e
 
 # Check if at least 1 arguments are provided
-if [ "$#" -lt 1 ]; then
-  echo "Usage: $0 arg1_network"
+if [ "$#" -lt 2 ]; then
+  echo "Usage: $0 arg1_network $1 arg2_topic"
   exit 1
 fi
 
@@ -18,7 +18,7 @@ if [ -z "$THRESHOLD_CANISTER" ]; then
   THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
 fi
 
-echo "Attempting to retrieve current balance in the codelta_backend default account ..."
+echo "Attempting to retrieve current balance in the codelta_backend $TOPIC account ..."
 echo
 dfx canister call codelta_backend check_balance '(variant { '$TOPIC' })'  --network=$NETWORK
 echo
@@ -26,7 +26,7 @@ echo
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}Do you want to submit a proposal to trigger a distribution to CO.DELTA team members? (y/n): ${NC}"
+echo -e "${GREEN}Do you want to submit a proposal to trigger a distribution to CO.DELTA $TOPIC team members? (y/n): ${NC}"
 read -r 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Attempting to retrieve codelta_backend principal for specifying in the proposal..."

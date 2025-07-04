@@ -18,7 +18,7 @@ pub struct Team<'a> {
 pub const TEAMS: &[Team] = &[
     // OG - Subnet Management
     Team {
-        sub_account: DEFAULT_SUBACCOUNT, // Zeros
+        sub_account: DEFAULT_SUBACCOUNT, // Zeros - shares account with API BN
         topic: Topic::SubnetManagement,
         members: &[
             &MEMBERS.aligatorr89,
@@ -28,10 +28,7 @@ pub const TEAMS: &[Team] = &[
     },
     // OG - API BoundaryNode Management
     Team {
-        sub_account: &[
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 1,
-        ], // Zeros with 1 in the end
+        sub_account: DEFAULT_SUBACCOUNT, // Zeros - shares account with SM
         topic: Topic::ApiBoundaryNodeManagement,
         members: &[
             &MEMBERS.aligatorr89,
@@ -43,8 +40,8 @@ pub const TEAMS: &[Team] = &[
     Team {
         sub_account: &[
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 2,
-        ], // Zeros with 2 in the end
+            0, 0, 1,
+        ], // Zeros with 1 in the end
         topic: Topic::ProtocolCanisterManagement,
         members: &[], // Fill members!
     },
@@ -52,8 +49,8 @@ pub const TEAMS: &[Team] = &[
     Team {
         sub_account: &[
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 3,
-        ], // Zeros with 3 in the end
+            0, 0, 2,
+        ], // Zeros with 2 in the end
         topic: Topic::IcOsVersionElection,
         members: &[], // Fill members!
     },
@@ -61,8 +58,8 @@ pub const TEAMS: &[Team] = &[
     Team {
         sub_account: &[
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 4,
-        ], // Zeros with 4 in the end
+            0, 0, 3,
+        ], // Zeros with 3 in the end - shares account with ParticipantManagement
         topic: Topic::NodeAdmin,
         members: &[], // Fill members!
     },
@@ -70,8 +67,8 @@ pub const TEAMS: &[Team] = &[
     Team {
         sub_account: &[
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 5,
-        ], // Zeros with 5 in the end
+            0, 0, 3,
+        ], // Zeros with 3 in the end - shares account with NodeAdmin
         topic: Topic::ParticipantManagement,
         members: &[], // Fill members!
     },

@@ -19,14 +19,14 @@ Use the `manage_icp.sh` script as follows. Be sure to first execute `chmod +x ma
 - Execute `./manage_icp.sh ic` to check the real balance of the production codelta_backend canister
 
 ```console
-root@BuildMachine:/home/CO_DELTA/CODELTA/codelta/utils# ./manage_icp.sh local
-Attempting to retrieve current balance in the codelta_backend default account ...
+root@BuildMachine:/home/CO_DELTA/CODELTA/codelta/utils# ./manage_icp.sh local SubnetManagement $THRESHOLD_CANISTER_ID
+Attempting to retrieve current balance in the codelta_backend SubnetManagement account ...
 
 Please enter the passphrase for your identity: [hidden]
 Decryption complete.
 (variant { Ok = "1000.00000001 Token" })
 
-Do you want to submit a proposal to trigger a distribution to CO.DELTA team members? (y/n): 
+Do you want to submit a proposal to trigger a distribution to CO.DELTA SubnetManagement team members? (y/n): 
 y
 Attempting to retrieve codelta_backend principal for specifying in the proposal...
 bd3sg-teaaa-aaaaa-qaaba-cai
@@ -36,7 +36,12 @@ to call 'distribute_icp' on canister 'bd3sg-teaaa-aaaaa-qaaba-cai' on the local 
 (y/n): 
 y
 Proceeding...
-Encoded method args: vec {68; 73; 68; 76; 1; 109; 113; 1; 0; 3; 64; 99; 53; 98; 55; 57; 49; 100; 102; 56; 57; 48; 57; 56; 51; 50; 48; 101; 100; 49; 57; 51; 102; 51; 101; 48; 50; 54; 102; 48; 49; 49; 99; 50; 57; 57; 57; 97; 49; 57; 49; 53; 55; 54; 52; 57; 50; 54; 97; 48; 97; 49; 97; 50; 53; 52; 97; 57; 57; 48; 98; 49; 54; 97; 100; 64; 102; 54; 97; 55; 102; 100; 101; 56; 102; 101; 100; 57; 56; 48; 102; 56; 55; 101; 52; 99; 57; 101; 99; 54; 102; 101; 48; 52; 56; 50; 48; 99; 57; 102; 100; 55; 48; 57; 97; 56; 97; 54; 101; 56; 53; 100; 101; 98; 54; 97; 101; 97; 51; 99; 49; 99; 49; 100; 51; 48; 99; 48; 100; 102; 64; 97; 50; 55; 48; 53; 48; 51; 50; 52; 54; 53; 48; 99; 50; 101; 99; 53; 100; 50; 57; 97; 53; 97; 55; 48; 48; 51; 49; 51; 54; 99; 55; 48; 54; 48; 56; 100; 100; 99; 49; 54; 54; 101; 97; 100; 49; 99; 52; 53; 54; 53; 54; 98; 51; 97; 98; 51; 99; 50; 98; 99; 102; 54; 57}
+About to encode METHOD_ARG (  
+    variant {
+      SubnetManagement
+    }
+  )
+Encoded method args: vec {68; 73; 68; 76; 1; 107; 18; 213; 165; 229; 1; 127; 143; 217; 227; 10; 127; 184; 215; 206; 40; 127; 201; 251; 153; 134; 1; 127; 193; 205; 253; 202; 1; 127; 246; 161; 216; 209; 1; 127; 241; 185; 160; 129; 3; 127; 224; 223; 247; 189; 3; 127; 195; 181; 161; 182; 4; 127; 141; 214; 205; 146; 6; 127; 243; 251; 230; 203; 6; 127; 162; 168; 242; 189; 8; 127; 240; 176; 245; 236; 8; 127; 223; 237; 170; 173; 10; 127; 246; 183; 203; 177; 11; 127; 194; 218; 130; 222; 11; 127; 239; 205; 244; 194; 12; 127; 151; 247; 225; 195; 14; 127; 1; 0; 7}
 
 Please enter the passphrase for your identity: [hidden]
 Decryption complete.
@@ -115,7 +120,7 @@ Call `./submit_proposal_canister_call.sh` to retrieve usage information (the sam
 Usage: ./submit_proposal_canister_call.sh arg1_network arg2_proposalSummary arg3_targetCanister arg4_targetMethod arg5_methodArg
 ```
 
-Note that the `manage_icp.sh` script mentioned above uses this script behind the scenes. Also note that the encoded argument is written to a file that you can inspect afterwards, if desired (`utils/canister_call_pipeline/arg.bin`). You can decode this using `didc decode` (e.g. `cat canister_call_pipeline/arg.bin | didc decode`). This may be useful if something went wrong and you'd like to inspect the encoded argument that was used.
+Note that the `manage_icp.sh` script mentioned above uses this script behind the scenes. Also note that the encoded argument is written to a file that you can inspect afterwards, if desired (`utils/canister_call_pipeline/arg.bin`). You can decode this using `didc decode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)'` (e.g. `cat canister_call_pipeline/arg.bin | didc decode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)'`). This may be useful if something went wrong and you'd like to inspect the encoded argument that was used.
 
 ### Submit a proposal to upgrade one of the three canisters
 
