@@ -10,8 +10,7 @@ crate-type = ["cdylib"]
 candid = "0.10.13"
 ic-cdk = "0.17.1"
 ic-cdk-macros = "0.17.1"
-icp-ledger = { git = "https://github.com/dfinity/ic", rev =  "7eace38b7580dc35af53b9180ea40480af4977dc"}
-icrc-ledger-client-cdk = { git = "https://github.com/dfinity/ic", rev =  "7eace38b7580dc35af53b9180ea40480af4977dc"}
-icrc-ledger-types = { git = "https://github.com/dfinity/ic", rev =  "7eace38b7580dc35af53b9180ea40480af4977dc"}
+ic-ledger-types = "0.14.0"
+icrc-ledger-types = "0.1.10"
 serde = "1.0"
 serde_bytes = "0.11"

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
-
 # Check if at least 2 argument is provided
 if [ "$#" -lt 2 ]; then
   echo "Usage: $0 arg1_network arg2_proposal_id"
@@ -14,6 +12,12 @@ NETWORK="$1"
 
 # Second argument - proposal id passed in as argument
 PROPOSAL_ID="$2"
+
+THRESHOLD_CANISTER="$3"
+# Set production threshold canister in case argument not provided
+if [ -z "$THRESHOLD_CANISTER" ]; then
+  THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
+fi
 
 echo "Attempting to retrieve proposal id $PROPOSAL_ID ..."
 RESPONSE=$(dfx canister call $THRESHOLD_CANISTER getProposal "($PROPOSAL_ID:nat)" --network=$NETWORK)
@@ -28,7 +32,7 @@ CANISTER_ARG=$(dfx canister call $THRESHOLD_CANISTER getProposalPayload "($PROPO
 if [ -z "$CANISTER_ARG" ]; then
   echo "No canister args to decode"
 else
-  echo "$CANISTER_ARG" | didc decode
+  echo "$CANISTER_ARG" | didc decode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)'
 fi
 echo
 

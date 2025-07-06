@@ -21,6 +21,12 @@ WASM_FILE="$3"
 # Optional fourth argument - args for the canister being upgraded
 UPGRADE_ARG="$4"
 
+THRESHOLD_CANISTER="$5"
+# Set production threshold canister in case argument not provided
+if [ -z "$THRESHOLD_CANISTER" ]; then
+  THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
+fi
+
 echo
 echo "Submit proposal to threshold canister '$THRESHOLD_CANISTER' to upgrade canister"
 echo "'$UPGRADE_CANISTER' by installing WASM '$WASM_FILE' on the $NETWORK network?"
