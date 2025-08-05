@@ -43,7 +43,11 @@ pub const TEAMS: &[Team] = &[
             0, 0, 1,
         ], // Zeros with 1 in the end
         topic: Topic::ProtocolCanisterManagement,
-        members: &[], // Fill members!
+        members: &[
+            &MEMBERS.remco,
+            &MEMBERS.gabriel,
+            &MEMBERS.aligatorr89,
+        ],
     },
     // Ic Os VersionE lection
     Team {
@@ -52,7 +56,11 @@ pub const TEAMS: &[Team] = &[
             0, 0, 2,
         ], // Zeros with 2 in the end
         topic: Topic::IcOsVersionElection,
-        members: &[], // Fill members!
+        members: &[
+            &MEMBERS.aligatorr89,
+            &MEMBERS.zane,
+            &MEMBERS.gautier,
+        ],
     },
     // Node Admin
     Team {
@@ -61,7 +69,12 @@ pub const TEAMS: &[Team] = &[
             0, 0, 3,
         ], // Zeros with 3 in the end - shares account with ParticipantManagement
         topic: Topic::NodeAdmin,
-        members: &[], // Fill members!
+        members: &[
+            //&MEMBERS.thyassa, uncomment if/when thyassa would like to start receiving a share of the distribution for her work
+            &MEMBERS.lorimer,
+            &MEMBERS.malith_hatananchchige,
+            &MEMBERS.gabriel,
+        ],
     },
     // Participant Management
     Team {
@@ -70,7 +83,52 @@ pub const TEAMS: &[Team] = &[
             0, 0, 3,
         ], // Zeros with 3 in the end - shares account with NodeAdmin
         topic: Topic::ParticipantManagement,
-        members: &[], // Fill members!
+        members: &[
+            //&MEMBERS.thyassa, uncomment if/when thyassa would like to start receiving a share of the distribution for her work
+            &MEMBERS.lorimer,
+            &MEMBERS.malith_hatananchchige,
+            &MEMBERS.gabriel,
+        ],
+    },
+    // Application Canister Management
+    Team {
+        sub_account: &[
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 4,
+        ], // Zeros with 4 in the end
+        topic: Topic::NetworkCanisterManagement,
+        members: &[
+            &MEMBERS.gautier,
+            &MEMBERS.malith_hatananchchige,
+            &MEMBERS.gekctek,
+        ],
+    },
+    // Service Nervous System Management
+    Team {
+        sub_account: &[
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 5,
+        ], // Zeros with 5 in the end
+        topic: Topic::ServiceNervousSystemManagement,
+        members: &[
+            &MEMBERS.remco,
+            &MEMBERS.gabriel,
+            &MEMBERS.gautier,
+        ],
+    },
+    // SNS & Neurons’ Fund
+    Team {
+        sub_account: &[
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 6,
+        ], // Zeros with 6 in the end
+        topic: Topic::SnsAndCommunityFund,
+        members: &[
+            //&MEMBERS.thyassa, uncomment if/when thyassa would like to start receiving a share of the distribution for her work
+            &MEMBERS.remco,
+            &MEMBERS.lorimer,
+            &MEMBERS.gabriel,
+        ],
     },
 ];
 
