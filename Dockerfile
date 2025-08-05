@@ -18,6 +18,9 @@ COPY dfx.json ./
 RUN DFXVM_INIT_YES=1 DFX_VERSION=$(cat dfx.json | jq -r .dfx) sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ENV export PATH=${HOME}/.local/share/dfx/bin:${PATH}
 
+# Install ic-wasm
+RUN cargo install ic-wasm --version 0.9.5 --locked
+
 COPY . .
 
 # Build
