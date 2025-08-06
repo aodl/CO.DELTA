@@ -58,7 +58,7 @@ pub const MEMBERS: Members = Members {
         principal: "mrzkb-iqvzd-crtjw-g2fai-hapm4-hlchs-exq4o-in7jm-szk73-o7bjn-cqe",
     },
     zane: Member {
-        account: "af02bc4d2fecd82d839a4b32100536f14fd11617536ddaee7feed5eb36aba11b",
+        account: "ae6c23cdb9fa6dd3d6fbd8585f8ffea3d72de69fb4bae901c4dbd6e393d79dc2",
         principal: "3sbdf-73gy7-fe4ta-ycey4-r2sgo-usien-c7d7u-yznr5-fficl-azvb7-fqe",
     },
 };
