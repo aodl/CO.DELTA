@@ -52,7 +52,7 @@ if [ -z "$METHOD_ARG" ]; then
   BLOB="vec { }"
 else
   echo "About to encode METHOD_ARG $METHOD_ARG"
-  didc encode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)' "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  didc encode "$METHOD_ARG" > canister_call_pipeline/arg.bin
   # Generate the blob from the canister call argument (didc encode converted to backslash-escaped vec hex sequence)
   BLOB=$(cat canister_call_pipeline/arg.bin \
     | tr -d ' \n' \
