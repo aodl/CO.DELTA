@@ -46,7 +46,7 @@ pub const TEAMS: &[Team] = &[
         members: &[
             &MEMBERS.remcodes,
             &MEMBERS.gabriel,
-            &MEMBERS.aligatorr89,
+            &MEMBERS.gautier,
         ],
     },
     // Ic Os VersionE lection
