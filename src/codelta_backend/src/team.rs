@@ -44,7 +44,7 @@ pub const TEAMS: &[Team] = &[
         ], // Zeros with 1 in the end
         topic: Topic::ProtocolCanisterManagement,
         members: &[
-            &MEMBERS.remco,
+            &MEMBERS.remcodes,
             &MEMBERS.gabriel,
             &MEMBERS.aligatorr89,
         ],
@@ -111,7 +111,7 @@ pub const TEAMS: &[Team] = &[
         ], // Zeros with 5 in the end
         topic: Topic::ServiceNervousSystemManagement,
         members: &[
-            &MEMBERS.remco,
+            &MEMBERS.remcodes,
             &MEMBERS.gabriel,
             &MEMBERS.gautier,
         ],
@@ -125,7 +125,7 @@ pub const TEAMS: &[Team] = &[
         topic: Topic::SnsAndCommunityFund,
         members: &[
             //&MEMBERS.thyassa, uncomment if/when thyassa would like to start receiving a share of the distribution for her work
-            &MEMBERS.remco,
+            &MEMBERS.remcodes,
             &MEMBERS.lorimer,
             &MEMBERS.gabriel,
         ],

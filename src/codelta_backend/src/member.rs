@@ -19,7 +19,7 @@ pub struct Members<'a> {
     /// ### Malith Hatananchchige
     pub malith_hatananchchige: Member<'a>,
     /// ### rem.codes
-    pub remco: Member<'a>,
+    pub remcodes: Member<'a>,
     /// ### zane
     pub zane: Member<'a>,
 }
@@ -73,7 +73,7 @@ impl Members<'_> {
             MEMBERS.gekctek,
             MEMBERS.lorimer,
             MEMBERS.malith_hatananchchige,
-            MEMBERS.remco,
+            MEMBERS.remcodes,
             MEMBERS.zane,
         ]
         .iter()
