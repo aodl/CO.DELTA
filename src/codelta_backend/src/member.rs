@@ -7,7 +7,7 @@ pub struct Members<'a> {
     /// ### Rok
     pub aligatorr89: Member<'a>,
     /// ### Donna Powell
-    pub donna: Member<'a>,
+    pub thyassa: Member<'a>,
     /// ### Gabriel
     pub gabriel: Member<'a>,
     /// ### Gautier Wojda
@@ -29,7 +29,7 @@ pub const MEMBERS: Members = Members {
         account: "c5b791df89098320ed193f3e026f011c2999a1915764926a0a1a254a990b16ad",
         principal: "koiza-s6kz2-m45zq-4lrn7-4v65m-6zemu-neoxj-vz6cb-ouolw-rrawv-mae",
     },
-    donna: Member {
+    thyassa: Member {
         account: "638138b167d49001a7da9dfa756d013a18bffaf87c1a60df13bc103ea86cdc2c",
         principal: "s653w-iizlk-et4s2-5wdju-2zflm-zm54k-bac3k-h7gdt-qltws-lji73-tqe",
     },
@@ -67,7 +67,7 @@ impl Members<'_> {
     pub fn iter(&self) -> impl Iterator<Item = &Member> {
         [
             MEMBERS.aligatorr89,
-            MEMBERS.donna,
+            MEMBERS.thyassa,
             MEMBERS.gabriel,
             MEMBERS.gautier,
             MEMBERS.gekctek,
