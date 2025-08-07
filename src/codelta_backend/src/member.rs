@@ -53,8 +53,8 @@ pub const MEMBERS: Members = Members {
         account: "a27050324650c2ec5d29a5a7003136c70608ddc166ead1c45656b3ab3c2bcf69",
         principal: "hfbtd-e2vzk-rvwfx-c55l3-tsuue-oizir-hl4bg-tajby-skikk-iefse-fqe",
     },
-    remco: Member {
-        account: "7272012b9b9460887f469ba9b337a86eb9aacdaf764c42b2ce5afe4b95ead3c3",
+    remcodes: Member {
+        account: "76207fc8b95d87858e16d41d59f53dedabe7502fa1b7da0bdde8bcf8233fc1b6",
         principal: "mrzkb-iqvzd-crtjw-g2fai-hapm4-hlchs-exq4o-in7jm-szk73-o7bjn-cqe",
     },
     zane: Member {
