@@ -31,7 +31,7 @@ pub const MEMBERS: Members = Members {
     },
     thyassa: Member {
         account: "638138b167d49001a7da9dfa756d013a18bffaf87c1a60df13bc103ea86cdc2c",
-        principal: "s653w-iizlk-et4s2-5wdju-2zflm-zm54k-bac3k-h7gdt-qltws-lji73-tqe",
+        principal: "7extd-ynwj7-vgvma-2qki6-ya7lp-duihw-5t7bn-bfo4u-77qv5-w4umb-fae",
     },
     gabriel: Member {
         account: "18292147c160aca36a08c5504eef0a75505fffad4f5351220403f01d8c641840",
