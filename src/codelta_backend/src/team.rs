@@ -73,7 +73,6 @@ pub const TEAMS: &[Team] = &[
             &MEMBERS.thyassa,
             &MEMBERS.lorimer,
             &MEMBERS.malith_hatananchchige,
-            &MEMBERS.gabriel,
         ],
     },
     // Participant Management
@@ -87,7 +86,6 @@ pub const TEAMS: &[Team] = &[
             &MEMBERS.thyassa,
             &MEMBERS.lorimer,
             &MEMBERS.malith_hatananchchige,
-            &MEMBERS.gabriel,
         ],
     },
     // Application Canister Management
