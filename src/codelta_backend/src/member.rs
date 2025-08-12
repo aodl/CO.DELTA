@@ -43,7 +43,7 @@ pub const MEMBERS: Members = Members {
     },
     gekctek: Member {
         account: "9c22b78fe64f0f8d2c957c2fe071ce14c340374dbca8624396272ce578fa3f50",
-        principal: "pib55-fsiwt-ftxf3-a6e7q-ed7dm-qfbgq-tdld3-jrotf-7y5bf-xsyju-uqe",
+        principal: "7357l-qewss-qxuo3-ccvfm-6ofer-bameo-jmkvh-kzlxv-vs4w7-zauoh-jae",
     },
     lorimer: Member {
         account: "f6a7fde8fed980f87e4c9ec6fe04820c9fd709a8a6e85deb6aea3c1c1d30c0df",
