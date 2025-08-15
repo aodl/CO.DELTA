@@ -1,6 +1,6 @@
 
 build:
-	./build.sh codelta_backend
+	./build.sh codelta_backend ./src/codelta_backend/codelta_backend.did
 
 
 release:

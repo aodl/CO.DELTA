@@ -19,6 +19,8 @@ if [ -z "$THRESHOLD_CANISTER" ]; then
   THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
 fi
 
+PAYLOAD_TYPE="$4"
+
 echo "Attempting to retrieve proposal id $PROPOSAL_ID ..."
 RESPONSE=$(dfx canister call $THRESHOLD_CANISTER getProposal "($PROPOSAL_ID:nat)" --network=$NETWORK)
 echo
@@ -32,7 +34,11 @@ CANISTER_ARG=$(dfx canister call $THRESHOLD_CANISTER getProposalPayload "($PROPO
 if [ -z "$CANISTER_ARG" ]; then
   echo "No canister args to decode"
 else
-  echo "$CANISTER_ARG" | didc decode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)'
+  if [ "$PAYLOAD_TYPE" ]; then
+    echo "$CANISTER_ARG" | didc decode --defs ../src/codelta_backend/codelta_backend.did --types $PAYLOAD_TYPE
+  else
+    echo "$CANISTER_ARG" | didc decode
+  fi
 fi
 echo
 

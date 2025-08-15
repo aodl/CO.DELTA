@@ -28,6 +28,8 @@ if [ -z "$THRESHOLD_CANISTER" ]; then
   THRESHOLD_CANISTER="6g7za-ziaaa-aaaar-qaqja-cai"
 fi
 
+PROPOSAL_TYPE="$7"
+
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
@@ -52,7 +54,11 @@ if [ -z "$METHOD_ARG" ]; then
   BLOB="vec { }"
 else
   echo "About to encode METHOD_ARG $METHOD_ARG"
-  didc encode --defs ../src/codelta_backend/codelta_backend.did --types '(Topic)' "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  if [ "$PROPOSAL_TYPE" ]; then
+    didc encode --defs ../src/codelta_backend/codelta_backend.did --types $PROPOSAL_TYPE "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  else
+    didc encode "$METHOD_ARG" > canister_call_pipeline/arg.bin
+  fi
   # Generate the blob from the canister call argument (didc encode converted to backslash-escaped vec hex sequence)
   BLOB=$(cat canister_call_pipeline/arg.bin \
     | tr -d ' \n' \

@@ -1,13 +1,13 @@
 use candid::{Nat, Principal};
-use ic_cdk::api::management_canister::main::{
-    canister_status, CanisterIdRecord, CanisterStatusResponse,
+use ic_cdk::api::{
+    caller, is_controller,
+    management_canister::main::{canister_status, CanisterIdRecord, CanisterStatusResponse},
 };
 use ic_cdk_macros::update;
 use ic_ledger_types::{
     account_balance, AccountBalanceArgs, AccountIdentifier, Memo, Subaccount, Tokens, TransferArgs,
     TransferError,
 };
-
 use crate::{member::MEMBERS, team::get_team_by_topic, topic::Topic};
 
 pub mod member;
@@ -15,9 +15,6 @@ pub mod team;
 pub mod topic;
 
 const DEFAULT_FEE: Tokens = Tokens::from_e8s(10_000); // 0.0001 ICP
-
-// Threshold canister can only be operated by proposal and threshold consensus among members (>50%)
-const THRESHOLD_PRINCIPAL: &str = "6g7za-ziaaa-aaaar-qaqja-cai";
 
 const LEDGER_CANISTER_ID: &str = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 
@@ -43,9 +40,10 @@ fn only_members_guard() -> Result<(), String> {
     contains_caller(&principals)
 }
 
-/// Guard for allowing only threshold calls
+/// Guard for allowing only threshold calls (by controlling canisters)
+/// Threshold canisters can only be operated by a proposal and threshold consensus among members (>50%)
 fn only_threshold_guard() -> Result<(), String> {
-    contains_caller(&[THRESHOLD_PRINCIPAL])
+    if is_controller(&caller()) { Ok(()) } else { Err("Caller is not a controller".into()) }
 }
 
 #[update(guard = "only_members_guard")]

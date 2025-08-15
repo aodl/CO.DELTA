@@ -6,16 +6,44 @@ pub struct Member<'a> {
 pub struct Members<'a> {
     /// ### Rok
     pub aligatorr89: Member<'a>,
+    /// ### Donna Powell
+    pub thyassa: Member<'a>,
+    /// ### Gabriel
+    pub gabriel: Member<'a>,
+    /// ### Gautier Wojda
+    pub gautier: Member<'a>,
+    /// ### Ethan Celletti
+    pub gekctek: Member<'a>,
     /// ### Alex Lorimer
     pub lorimer: Member<'a>,
     /// ### Malith Hatananchchige
     pub malith_hatananchchige: Member<'a>,
+    /// ### rem.codes
+    pub remcodes: Member<'a>,
+    /// ### zane
+    pub zane: Member<'a>,
 }
 
 pub const MEMBERS: Members = Members {
     aligatorr89: Member {
         account: "c5b791df89098320ed193f3e026f011c2999a1915764926a0a1a254a990b16ad",
         principal: "koiza-s6kz2-m45zq-4lrn7-4v65m-6zemu-neoxj-vz6cb-ouolw-rrawv-mae",
+    },
+    thyassa: Member {
+        account: "638138b167d49001a7da9dfa756d013a18bffaf87c1a60df13bc103ea86cdc2c",
+        principal: "7extd-ynwj7-vgvma-2qki6-ya7lp-duihw-5t7bn-bfo4u-77qv5-w4umb-fae",
+    },
+    gabriel: Member {
+        account: "18292147c160aca36a08c5504eef0a75505fffad4f5351220403f01d8c641840",
+        principal: "bn6wo-xpofx-5va6n-knhsi-d26er-6oxej-a5m3i-i5yh7-h3il7-s65zr-lae",
+    },
+    gautier: Member {
+        account: "794e3a581d78757b60258d77905eaa8af04bd9d3b33fddce1c5ef2b0562d851e",
+        principal: "yvi2m-qclpo-iof7c-xbzh5-4g2hb-i36yy-yx7i2-iczo2-oei56-ldao3-rae",
+    },
+    gekctek: Member {
+        account: "9c22b78fe64f0f8d2c957c2fe071ce14c340374dbca8624396272ce578fa3f50",
+        principal: "7357l-qewss-qxuo3-ccvfm-6ofer-bameo-jmkvh-kzlxv-vs4w7-zauoh-jae",
     },
     lorimer: Member {
         account: "f6a7fde8fed980f87e4c9ec6fe04820c9fd709a8a6e85deb6aea3c1c1d30c0df",
@@ -25,14 +53,28 @@ pub const MEMBERS: Members = Members {
         account: "a27050324650c2ec5d29a5a7003136c70608ddc166ead1c45656b3ab3c2bcf69",
         principal: "hfbtd-e2vzk-rvwfx-c55l3-tsuue-oizir-hl4bg-tajby-skikk-iefse-fqe",
     },
+    remcodes: Member {
+        account: "76207fc8b95d87858e16d41d59f53dedabe7502fa1b7da0bdde8bcf8233fc1b6",
+        principal: "mrzkb-iqvzd-crtjw-g2fai-hapm4-hlchs-exq4o-in7jm-szk73-o7bjn-cqe",
+    },
+    zane: Member {
+        account: "ae6c23cdb9fa6dd3d6fbd8585f8ffea3d72de69fb4bae901c4dbd6e393d79dc2",
+        principal: "3sbdf-73gy7-fe4ta-ycey4-r2sgo-usien-c7d7u-yznr5-fficl-azvb7-fqe",
+    },
 };
 
 impl Members<'_> {
     pub fn iter(&self) -> impl Iterator<Item = &Member> {
         [
             MEMBERS.aligatorr89,
+            MEMBERS.thyassa,
+            MEMBERS.gabriel,
+            MEMBERS.gautier,
+            MEMBERS.gekctek,
             MEMBERS.lorimer,
             MEMBERS.malith_hatananchchige,
+            MEMBERS.remcodes,
+            MEMBERS.zane,
         ]
         .iter()
     }
