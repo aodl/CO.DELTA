@@ -28,7 +28,7 @@ echo $RESPONSE
 echo
 echo "Attempting to decode payload blob ..."
 # Get the raw blob hex output (without backslashes) into a variable.
-CANISTER_ARG=$(dfx canister call $THRESHOLD_CANISTER getProposalPayload "($PROPOSAL_ID:nat)" --network=$NETWORK --output idl | sed -E 's/^\(\s*opt blob\s+"([^"]*)"\s*\)$/\1/'  | tr -d '\\')
+CANISTER_ARG=$(dfx canister call $THRESHOLD_CANISTER getProposalPayload "($PROPOSAL_ID:nat)" --network=$NETWORK --output idl | sed -nE 's/.*opt[[:space:]]+blob[[:space:]]+"([^"]*)".*/\1/p'  | tr -d '\\')
 
 # Check if CANISTER_ARG is empty or not
 if [ -z "$CANISTER_ARG" ]; then
