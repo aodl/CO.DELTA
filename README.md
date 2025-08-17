@@ -20,6 +20,7 @@ Canisters are Internet Computer smart contracts ([more info](https://internetcom
 1. **codelta_frontend**: [wtjj7-cyaaa-aaaar-qaozq-cai](https://dashboard.internetcomputer.org/canister/wtjj7-cyaaa-aaaar-qaozq-cai)
 2. **codelta_backend**: [qkgir-uyaaa-aaaar-qaonq-cai](https://dashboard.internetcomputer.org/canister/qkgir-uyaaa-aaaar-qaonq-cai)
 3. **threshold** [6g7za-ziaaa-aaaar-qaqja-cai](https://dashboard.internetcomputer.org/canister/6g7za-ziaaa-aaaar-qaqja-cai) ([separate repo](https://github.com/aodl/threshold))
+      - Redundant instance: [wcmhj-xqaaa-aaaar-qbtha-cai](https://dashboard.internetcomputer.org/canister/wcmhj-xqaaa-aaaar-qbtha-cai) (protects against botched upgrades to the primary threshold canister)
 
 None of these canisters are controlled unilaterally by any person. They're decentralised, requiring team member consensus to manage and upgrade. More info below.
 
