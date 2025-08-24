@@ -1,3 +1,5 @@
+use std::sync::{LazyLock, Mutex};
+
 use icrc_ledger_types::icrc1::account::DEFAULT_SUBACCOUNT;
 
 use crate::{
@@ -135,4 +137,27 @@ pub fn get_team_by_topic(topic: Topic) -> &'static Team<'static> {
         ic_cdk::println!("team not found for topic {:?}", topic);
         panic!("team not found for topic");
     });
+}
+
+static SUB_ACCOUNT_0_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_1_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_2_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_3_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_4_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_5_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+static SUB_ACCOUNT_6_LOCK: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+
+pub fn get_team_subaccount_lock(sub_account: &[u8; 32]) -> &'static LazyLock<Mutex<()>> {
+    match sub_account {
+        [.., 0] => &SUB_ACCOUNT_0_LOCK,
+        [.., 1] => &SUB_ACCOUNT_1_LOCK,
+        [.., 2] => &SUB_ACCOUNT_2_LOCK,
+        [.., 3] => &SUB_ACCOUNT_3_LOCK,
+        [.., 4] => &SUB_ACCOUNT_4_LOCK,
+        [.., 5] => &SUB_ACCOUNT_5_LOCK,
+        [.., 6] => &SUB_ACCOUNT_6_LOCK,
+        _ => {
+            panic!("sub-account missing {:?}", sub_account);
+        }
+    }
 }
