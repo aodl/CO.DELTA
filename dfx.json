@@ -4,16 +4,6 @@
       "candid": "src/codelta_backend/codelta_backend.did",
       "package": "codelta_backend",
       "type": "rust"
-    },
-    "codelta_frontend": {
-      "dependencies": [
-        "codelta_backend"
-      ],
-      "source": [
-        "src/codelta_frontend/assets",
-        "src/codelta_frontend/src"
-      ],
-      "type": "assets"
     }
   },
   "defaults": {

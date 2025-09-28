@@ -28,7 +28,7 @@ None of these canisters are controlled unilaterally by any person. They're decen
 
 https://wtjj7-cyaaa-aaaar-qaozq-cai.icp0.io/
 
-A standard static asset canister, providing an on-chain point of reference that describes what CO.DELTA is.
+Maintained in a [separate repo](https://github.com/aodl/CO.DELTA-frontend) focused on verifiable http responses, with web assets embedded in WASM for simpler verification and consensus workflow.
 
 The controllers of this canister are the **codelta_backend** canister and **threshold** canister described below.
 
