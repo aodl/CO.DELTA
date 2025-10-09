@@ -54,7 +54,7 @@ pub const MEMBERS: Members = Members {
         principal: "hfbtd-e2vzk-rvwfx-c55l3-tsuue-oizir-hl4bg-tajby-skikk-iefse-fqe",
     },
     remcodes: Member {
-        account: "76207fc8b95d87858e16d41d59f53dedabe7502fa1b7da0bdde8bcf8233fc1b6",
+        account: "02ca3b200179b0b0fa40cbee566caf47e736e44e441379fba2c5259221469b22",
         principal: "mrzkb-iqvzd-crtjw-g2fai-hapm4-hlchs-exq4o-in7jm-szk73-o7bjn-cqe",
     },
     zane: Member {
