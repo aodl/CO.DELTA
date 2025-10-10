@@ -8,7 +8,7 @@ use ic_ledger_types::{
     account_balance, AccountBalanceArgs, AccountIdentifier, Memo, Subaccount, Tokens, TransferArgs,
     TransferError,
 };
-use crate::{member::MEMBERS, team::get_team_by_topic, topic::Topic};
+use crate::{member::MEMBERS, team::{get_team_by_topic, get_team_subaccount_lock}, topic::Topic};
 
 pub mod member;
 pub mod team;
@@ -94,6 +94,15 @@ async fn check_subaccount_hex(topic: Topic) -> Result<String, String> {
 #[update(guard = "only_threshold_guard")]
 async fn distribute_icp(topic: Topic, account_ids: Option<Vec<String>>) -> Result<(), String> {
     let team = get_team_by_topic(topic);
+
+    let lock = get_team_subaccount_lock(team.sub_account)
+        .try_lock()
+        .ok(); // Store to a context variable "lock" that lives until context ends
+    if lock.is_none() {
+        ic_cdk::println!("resource for {:?} is busy", team.topic);
+        return Err(format!("resource for {:?} is busy", team.topic));
+    }
+
     let team_account_ids = team.members.iter().map(|m| m.account);
 
     // Pick all team members accounts and optionaly filter them by provided accounts
