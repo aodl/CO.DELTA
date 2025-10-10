@@ -70,7 +70,7 @@ pub const TEAMS: &[Team] = &[
         ], // Zeros with 3 in the end - shares account with ParticipantManagement
         topic: Topic::NodeAdmin,
         members: &[
-            &MEMBERS.thyassa,
+            &MEMBERS.gautier,
             &MEMBERS.lorimer,
             &MEMBERS.malith_hatananchchige,
         ],
@@ -83,7 +83,7 @@ pub const TEAMS: &[Team] = &[
         ], // Zeros with 3 in the end - shares account with NodeAdmin
         topic: Topic::ParticipantManagement,
         members: &[
-            &MEMBERS.thyassa,
+            &MEMBERS.gautier,
             &MEMBERS.lorimer,
             &MEMBERS.malith_hatananchchige,
         ],
@@ -122,7 +122,6 @@ pub const TEAMS: &[Team] = &[
         ], // Zeros with 6 in the end
         topic: Topic::SnsAndCommunityFund,
         members: &[
-            &MEMBERS.thyassa,
             &MEMBERS.remcodes,
             &MEMBERS.lorimer,
             &MEMBERS.gabriel,
