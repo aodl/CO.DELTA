@@ -12,8 +12,8 @@ pub struct Members<'a> {
     pub gabriel: Member<'a>,
     /// ### Gautier Wojda
     pub gautier: Member<'a>,
-    /// ### Ethan Celletti
-    pub gekctek: Member<'a>,
+    /// ### Max
+    pub max: Member<'a>,
     /// ### Alex Lorimer
     pub lorimer: Member<'a>,
     /// ### Malith Hatananchchige
@@ -41,9 +41,9 @@ pub const MEMBERS: Members = Members {
         account: "794e3a581d78757b60258d77905eaa8af04bd9d3b33fddce1c5ef2b0562d851e",
         principal: "yvi2m-qclpo-iof7c-xbzh5-4g2hb-i36yy-yx7i2-iczo2-oei56-ldao3-rae",
     },
-    gekctek: Member {
-        account: "9c22b78fe64f0f8d2c957c2fe071ce14c340374dbca8624396272ce578fa3f50",
-        principal: "7357l-qewss-qxuo3-ccvfm-6ofer-bameo-jmkvh-kzlxv-vs4w7-zauoh-jae",
+    max: Member {
+        account: "1eaba0949d5fa6067575315d1fa6fca7d799233d5b6c74e82ade7b57a65b24f0",
+        principal: "tgbrj-23l3t-4mhce-vmlrh-ywg4o-npgvc-uinua-5nhmf-iv2ck-tlk7n-bqe",
     },
     lorimer: Member {
         account: "f6a7fde8fed980f87e4c9ec6fe04820c9fd709a8a6e85deb6aea3c1c1d30c0df",
@@ -70,7 +70,7 @@ impl Members<'_> {
             MEMBERS.thyassa,
             MEMBERS.gabriel,
             MEMBERS.gautier,
-            MEMBERS.gekctek,
+            MEMBERS.max,
             MEMBERS.lorimer,
             MEMBERS.malith_hatananchchige,
             MEMBERS.remcodes,
