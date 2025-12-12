@@ -100,7 +100,7 @@ pub const TEAMS: &[Team] = &[
         members: &[
             &MEMBERS.gautier,
             &MEMBERS.malith_hatananchchige,
-            &MEMBERS.gekctek,
+            &MEMBERS.max,
         ],
     },
     // Service Nervous System Management
